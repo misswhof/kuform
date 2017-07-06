@@ -1,0 +1,47 @@
+<div class="attrbox">
+	<!-- {{getFormdata()}} -->
+	<h4>题目问题：</h4>
+	<input type="text" ng-model="theq().title" class="form-control" />
+
+	<h4>是否必须</h4>
+	<label><input type="checkbox" ng-model="theq().required" /> 必须</label>
+ 	
+ 	<h4>题目类型：</h4>
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="single-option">单选题</label>
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="mutiple-option">多选题</label>
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="text">单行文本</label>
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="textarea">多行文本</label>
+	
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="select-option">下拉选择</label>
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="date">日期</label>
+	<label class="label_l"><input type="radio" ng-model="theq().type" value="range">范围条</label>
+ 	 
+	<div class="cl"></div>
+	<div ng-show="theq().type == 'single-option' || theq().type == 'mutiple-option' || theq().type == 'select-option'">
+	 	<h4>选项（拖拽小揪揪可以排序）</h4>
+	 	<div class="optionsbox">
+			<div ng-repeat="item in theq().options track by $index" >
+				<div class="row">
+					<div class="col-lg-8">
+						<input type="text" ng-model="theq().options[$index]" class="form-control" ng-blur="checkOption($event,$index)"/> 
+					</div>
+					<div class="col-lg-4 btns">
+						<span class="glyphicon glyphicon-remove" ng-click="remove($index)"></span>
+						<span class="glyphicon glyphicon-align-justify handle"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8">
+				<input type="text" class="form-control" ng-blur="addOption($event)" >
+			</div>
+			<div class="col-lg-4 btns">
+			 
+			</div>
+		</div>
+	</div>
+
+	
+	
+</div>

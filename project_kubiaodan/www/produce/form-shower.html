@@ -1,0 +1,20 @@
+<div class="form-shower">
+	<h3>{{getFormdata().title}}</h3>
+	<hr>
+	<div ng-repeat="question in getFormdata().questions" ng-class="{'question' : true , 'onedit' : $index == onEdit()}">
+		<h4>
+			<span style="color:red;" ng-show="question.required">*</span>
+			{{$index + 1}}. {{question.title}}
+		</h4>
+
+		<span class="editbtn glyphicon glyphicon-pencil" ng-click="edit($index)"></span>
+
+		<form-component 
+			type="{{question.type}}" 
+			question="question" 
+			name="{{'no' + ($index + 1)}}"
+		></form-component>
+	</div>
+
+	<div class="mask"></div>
+</div>
